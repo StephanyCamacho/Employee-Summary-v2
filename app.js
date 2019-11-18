@@ -7,11 +7,6 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-//Employees created
-const employeeArray = [];
-
-const htmlRenderer = require('./lib/htmlRenderer');
-
 const {
     defineEmployee, 
     employeeQuestions, 
@@ -20,8 +15,13 @@ const {
     internQuestions
 } = require('./lib/inquire');
 
+//Employees created
+
+const htmlRenderer = require('./lib/htmlRenderer');
+
+const employeeArray = [];
+
 function init() {
-    console.log('\nWelcome! Time to build your team:\n')
     inquirer
     .prompt(employeeQuestions.concat(managerQuestions))
     .then(({name, id, email, officeNumber}) => {
@@ -42,7 +42,7 @@ function getEmployee() {
             case 'Intern':
                 getIntern();
                 break;
-            case 'Exit':
+            case 'Complete':
                 htmlRenderer(employeeArray);
                 // TODO - How to export employee list keeping functions and display logic separate
                 break;
