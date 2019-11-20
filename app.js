@@ -25,7 +25,7 @@ function init() {
     inquirer
     .prompt(employeeQuestions.concat(managerQuestions))
     .then(({name, id, email, officeNumber}) => {
-        let manager = new Manager(name, id, email, officeNumber);
+        let manager = new Manager(name, id, officeNumber, email);
         employeeArray.push(manager);
         getEmployee();
     })
@@ -54,7 +54,7 @@ function getEngineer() {
     inquirer
     .prompt(employeeQuestions.concat(engineerQuestions))
     .then(({name, id, email, githubUsername}) => {
-        let engineer = new Engineer(name, id, email, githubUsername);
+        let engineer = new Engineer(name, id, githubUsername, email);
         employeeArray.push(engineer);
         getEmployee();
     })
@@ -64,7 +64,7 @@ function getIntern() {
     inquirer
     .prompt(employeeQuestions.concat(internQuestions))
     .then(({name, id, email, school}) => {
-        let intern = new Intern(name, id, email, school);
+        let intern = new Intern(name, id, school, email);
         employeeArray.push(intern)
         getEmployee();
     })
